@@ -4,7 +4,9 @@
   "description": "responsive organisation chart built by bootstrap-vue ### inspired by another repository 2 CSS files. This repository includes an CSS file originally copied from https://github.com/zkoss-demo/zk-template-examples 2 CSS files and modified.   The files are :   - src/main/webapp/orgchart/css/orgchart-vertical.css - src/main/webapp/orgchart/css/orgchart.css",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "parcel examples/index.html",
+    "build": "parcel buld examples/index.html"
   },
   "repository": {
     "type": "git",
@@ -25,7 +27,7 @@
   },
   "devDependencies": {
     "@vue/component-compiler-utils": "^3.0.0",
+    "parcel-bundler": "^1.12.3",
     "vue-template-compiler": "^2.6.10"
   }
-
 }

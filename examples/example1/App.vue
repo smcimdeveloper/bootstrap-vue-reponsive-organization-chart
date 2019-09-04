@@ -6,7 +6,7 @@
 
 <script>
 
-    import OrgChart from '../components/OrgChart.vue';
+    import OrgChart from '../../src/components/OrgChart.vue';
 
     const orgChart_data= {
     mobile_breakpoint:'sm',
