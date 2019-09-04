@@ -9,4 +9,10 @@ The files are :
 ## in progress...
 
 ## to do....
++ beautify the example
++ make more example
++ to demo vertical branch
++ empty node
++ json schema for the orgchart data json
+
 
