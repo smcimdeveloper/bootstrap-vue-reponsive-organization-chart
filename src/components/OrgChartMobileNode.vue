@@ -1,25 +1,48 @@
 <template>
-
+    <div v-b-toggle=collapse_id class="d-flex border border-warning p-2 orgChartMobileNode" :class="node_level_class">
+        <div class="d-flex flex-column justify-content-center" style="width:50px;">
+            <template v-if="hasMoreBranches">
+            <i class="when-opened fas fa-caret-down"></i>
+            <i class="when-closed fas fa-caret-right"></i>
+            </template>
+        </div>
+        <b-link v-if="hasLink"
+            :href="node_data.link"
+            v-html="node_data.html"
+            class="d-flex flex-column justify-content-center">
+        </b-link>
+        <div v-else
+            v-html="node_data.html"
+            class="d-flex flex-column justify-content-center">
+        </div>
+    </div>
 </template>
 
 <script>
+import { VBToggle,BLink  } from 'bootstrap-vue';
 export default {
-  methods:{
-    id_generator:function() {
-      let result = '';
-      const length = 10;
-      const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-      const charactersLength = characters.length;
-      for ( let i = 0; i < length; i++ ) {
-          result += characters.charAt(Math.floor(Math.random() * charactersLength));
-      }
-      return result;
-    }
-  }
+    directives:{
+      BToggle:VBToggle
+    },
+    components:{
+      VBToggle,
+      BLink
+    },
+    props: {
+        node_data: {},
+        collapse_id:String,
+        hasMoreBranches:Boolean,
+        level:Number,
+    },
+    computed: {
+      hasLink: function() {
+          return (this.node_data.link != undefined);
+      },
+      node_level_class:function(){
+          return `node_level${this.level} ${this.node_data.classes}`;
+      }  
+    },
 }
 </script>
 
-<style scoped>
-
-</style>
 

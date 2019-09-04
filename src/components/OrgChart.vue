@@ -1,7 +1,7 @@
 <template>
   <div>
     <OrgChartDesktop class="d-none" :class="desktop_display_class" :orgChart_data="orgChart_data"></OrgChartDesktop>
-    <!-- <OrgChartMobile class="d-flex" :class="mobile_hidden_class" :orgChart_data="orgChart_data"></OrgChartMobile> -->
+    <OrgChartMobile class="d-flex" :class="mobile_hidden_class" :orgChart_data="orgChart_data"></OrgChartMobile>
   </div>
 </template>
 
