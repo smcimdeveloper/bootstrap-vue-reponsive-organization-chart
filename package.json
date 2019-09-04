@@ -1,0 +1,31 @@
+{
+  "name": "bootstrap-vue-reponsive-organization-chart",
+  "version": "1.0.0",
+  "description": "responsive organisation chart built by bootstrap-vue ### inspired by another repository 2 CSS files. This repository includes an CSS file originally copied from https://github.com/zkoss-demo/zk-template-examples 2 CSS files and modified.   The files are :   - src/main/webapp/orgchart/css/orgchart-vertical.css - src/main/webapp/orgchart/css/orgchart.css",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jasper2virtual/bootstrap-vue-reponsive-organization-chart.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jasper2virtual/bootstrap-vue-reponsive-organization-chart/issues"
+  },
+  "homepage": "https://github.com/jasper2virtual/bootstrap-vue-reponsive-organization-chart#readme",
+  "dependencies": {
+    "app.vue": "^0.1.10",
+    "bootstrap": "^4.3.1",
+    "bootstrap-vue": "^2.0.0-rc.28",
+    "vue": "^2.6.10",
+    "vue-hot-reload-api": "^2.3.3"
+  },
+  "devDependencies": {
+    "@vue/component-compiler-utils": "^3.0.0",
+    "vue-template-compiler": "^2.6.10"
+  }
+
+}
