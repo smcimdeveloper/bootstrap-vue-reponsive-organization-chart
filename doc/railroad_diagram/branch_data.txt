@@ -1,0 +1,9 @@
+ComplexDiagram(
+  Comment('branch_data'),
+  '{',
+  'node :',NonTerminal('node_data'),
+  Optional(
+    Sequence(',',NonTerminal('branches'),Optional(Sequence(',',NonTerminal('branches_vertical_breakpoint')))),
+  ),
+  '}'
+)

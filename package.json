@@ -19,11 +19,10 @@
   },
   "homepage": "https://github.com/jasper2virtual/bootstrap-vue-reponsive-organization-chart#readme",
   "dependencies": {
-    "app.vue": "^0.1.10",
     "bootstrap": "^4.3.1",
-    "bootstrap-vue": "^2.0.0-rc.28",
+    "bootstrap-vue": "^2.0.1",
     "vue": "^2.6.10",
-    "vue-hot-reload-api": "^2.3.3"
+    "vue-hot-reload-api": "^2.3.4"
   },
   "devDependencies": {
     "@vue/component-compiler-utils": "^3.0.0",

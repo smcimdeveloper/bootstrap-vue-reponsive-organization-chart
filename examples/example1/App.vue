@@ -8,13 +8,14 @@
 
     import OrgChart from '../../src/components/OrgChart.vue';
     import {createNode,createBranches} from '../../src/components/OrgChart.js';
+    import android19 from '../images/android19.png';
 
     const director=createNode({
         classes:'director',
         html:`
         <div class="d-flex">
             <div style="flex-basis:25%" class="mr-3">
-            <img src="/assets/gld.gov.hk/images/gld-logo.svg" class="img-fluid"></img>
+            <img src="${android19}" style="max-height:100px" class="img-fluid"></img>
             </div>
             <div>
                 <div class="title">Director of Ones Memory</div>
@@ -157,3 +158,14 @@
         
     };
 </script>
+
+<style>
+.director{
+    background:lightcyan;
+    border:1px solid black;
+}
+.division{
+    background:greenyellow;
+    border:1px solid black;
+}
+</style>
