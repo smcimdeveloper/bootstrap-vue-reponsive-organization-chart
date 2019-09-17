@@ -1,7 +1,7 @@
 <template>
   <ul class="orgChartDesktopBranches">
       <li v-for="(branch,index) in branches_parsed" class="orgChartDesktopBranch" :class="branch.branch_class" :key="index">
-          <OrgChartDesktopNode :node_data="branch.node_data"></OrgChartDesktopNode>
+          <OrgChartDesktopNode :node_data="branch.node"></OrgChartDesktopNode>
           <OrgChartDesktopBranches v-if="branch.hasSubBranches" :branches="branch.branches"></OrgChartDesktopBranches>
       </li>
   </ul>
@@ -26,22 +26,17 @@
                 // default assume it is leaf, has no sub branches
                 branch.hasSubBranches=false;
                 branch.branch_class = 'orgChartDesktopLeaf';
-                if ('branches' in branch) {
+                if (branch.hasOwnProperty('branches')) {
                   // if it has sub branches, it must not a leaf
                   branch.hasSubBranches=true;
                   branch.branch_class = '';
-                  if('vertical_breakpoint' in branch) {
+                  if(branch.hasOwnProperty('branches_vertical_breakpoint')) {
                     // the sub branches can be in vertical mode at breakpoints : 
                     // sm, md, lg, xl
                     // all : all breakpoints above
-                    branch.branch_class = `orgChartDesktop-${branch.vertical_breakpoint}-vBranch`;
+                    branch.branch_class = `orgChartDesktop-${branch.branches_vertical_breakpoint}-vBranch`;
                   }
                 }
-                branch.node_data={
-                  classes:branch.node_classes,
-                  html:branch.node_html,
-                  link:branch.link,
-                };
                 return branch;
             });
         },

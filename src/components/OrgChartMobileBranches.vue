@@ -4,7 +4,7 @@
           <orgChartMobileNode
           v-if="false==branch.nobody"
           :collapse_id="branch.collapse_id"
-          :node_data="branch.node_data"
+          :node_data="branch.node"
           :hasMoreBranches="branch.hasMoreBranches"
           :level="level">
           </orgChartMobileNode>
@@ -41,14 +41,9 @@
     computed: {
       branches_parsed: function() {
           return this.branches.map(branch=>{
-              branch.node_data={
-                classes:branch.node_classes,
-                html:branch.node_html,
-                link:branch.link,
-              };
               branch.collapse_id=this.boxes_status.id_generator();
-              branch.hasMoreBranches='branches' in branch;
-              branch.nobody=branch.node_data.classes.includes('nobody_line');
+              branch.hasMoreBranches=branch.hasOwnProperty('branches');
+              branch.nobody=branch.node.classes.includes('nobody_line');
               if (branch.hasMoreBranches && false==branch.nobody) this.boxes_status.addId(branch.collapse_id);
               return branch;
           });

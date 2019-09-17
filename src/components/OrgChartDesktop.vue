@@ -1,8 +1,8 @@
 <template>
     <div class="orgChartDesktopWrapper" ref="orgChartDesktopWrapper">
         <ul class="orgChartDesktop" ref="orgChartDesktop">
-            <li class="orgChartDesktopRoot orgChartDesktopBranch" :class="orgChart_data.root.branch_classes">
-                <OrgChartDesktopNode :node_data="node_data"></OrgChartDesktopNode>
+            <li class="orgChartDesktopRoot orgChartDesktopBranch">
+                <OrgChartDesktopNode :node_data="orgChart_data.root.node"></OrgChartDesktopNode>
                 <OrgChartDesktopBranches :branches="orgChart_data.root.branches"></OrgChartDesktopBranches>
             </li>
         </ul>
@@ -21,15 +21,6 @@
         components:{
             OrgChartDesktopBranches,
             OrgChartDesktopNode,
-        },
-        computed:{
-            node_data:function(){
-                return{
-                    classes:this.orgChart_data.root.node_classes,
-                    html:this.orgChart_data.root.node_html,
-                    link:this.orgChart_data.root.link,
-                };
-            },
         },
         methods: {
             fitOrgChartWithWrapper: function() {

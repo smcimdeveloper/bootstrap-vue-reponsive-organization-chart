@@ -4,7 +4,7 @@
         <div class="orgChartMobile my-3 w-100">
             <OrgChartMobileNode
             :collapse_id="get_root_collapse_id"
-            :node_data="node_data" 
+            :node_data="orgChart_data.root.node" 
             :hasMoreBranches=true
             :level=0></OrgChartMobileNode>
             <orgChartMobileBranches 
@@ -105,13 +105,6 @@
           };
           return label[this.btnState];
       },
-      node_data:function(){
-        return{
-          classes:this.orgChart_data.root.node_classes,
-          html:this.orgChart_data.root.node_html,
-          link:this.orgChart_data.root.link,
-        };
-      },      
     },
     created(){
       this.boxes_status.vue=this;

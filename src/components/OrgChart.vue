@@ -17,11 +17,14 @@
       OrgChartMobile
     },
     computed:{
+      comp_mobile_breakpoint:function(){
+        return (this.orgChart_data.hasOwnProperty('mobile_breakpoint'))?this.orgChart_data.mobile_breakpoint:'sm';
+      },
       desktop_display_class:function(){
-        return `d-${this.orgChart_data.mobile_breakpoint}-flex`;
+        return `d-${this.comp_mobile_breakpoint}-flex`;
       },
       mobile_hidden_class:function(){
-        return `d-${this.orgChart_data.mobile_breakpoint}-none`;
+        return `d-${this.comp_mobile_breakpoint}-none`;
       }
     }
   }
