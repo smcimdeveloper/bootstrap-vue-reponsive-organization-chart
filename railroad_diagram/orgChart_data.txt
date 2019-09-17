@@ -1,0 +1,6 @@
+ComplexDiagram(
+Comment('orgChart_data'),'{',
+    Optional(Sequence(NonTerminal('mobile_breakpoint'),',')),
+    Sequence('root : ',NonTerminal('branch_data')),
+  '}'
+)

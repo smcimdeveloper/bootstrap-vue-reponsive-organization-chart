@@ -1,0 +1,8 @@
+ComplexDiagram(
+  Comment('node_data'),
+  '{',
+  'html:',NonTerminal('String'),
+  Optional(Sequence(',','classes :',NonTerminal('String'))),
+  Optional(Sequence(',','link :',NonTerminal('String'))),
+  '}'
+)
