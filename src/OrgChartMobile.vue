@@ -21,8 +21,7 @@
   import OrgChartMobileBranches from './OrgChartMobileBranches.vue';
   import OrgChartMobileNode from './OrgChartMobileNode.vue';
   import {BButton} from 'bootstrap-vue';
-  import './OrgChartMobile.css';
-
+  
   export default {
     props:{
       orgChart_data:Object
@@ -112,7 +111,42 @@
   }
 </script>
 
-<style scoped>
+<style>
+
+.orgChartMobile .collapsed > div > .when-opened,
+.orgChartMobile :not(.collapsed) > div > .when-closed {
+    display: none;
+}
+
+.orgChartMobile{
+    border:8px solid green;
+}
+
+.orgChartMobile .branches_level1{
+    border:8px solid red;
+}
+
+.orgChartMobile .branches_level2{
+    border:4px solid orange;
+}
+
+.orgChartMobile .branches_level3{
+    border:2px solid gold;
+}
+
+.orgChartMobile .node_level1{
+    padding-left:1em!important;
+}
+
+.orgChartMobile .node_level2{
+    padding-left:2em!important;
+}
+
+.orgChartMobile .node_level3{
+    padding-left:3em!important;
+}
+
+
 
 </style>
 
