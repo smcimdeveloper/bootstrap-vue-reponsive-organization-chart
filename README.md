@@ -14,9 +14,14 @@ Thanks to [zkoss-demo](https://github.com/zkoss-demo), I copy the CSS rules and 
 
 ## Requirement
 
+My codes is written with the help of bootstrap-vue, so you will need the following if you follow my examples to build your own work.
+
 - [bootstrap-vue v2.0.0](https://bootstrap-vue.js.org/)
 - [Vue.js v2.6](https://vuejs.org/)
 - [Bootstrap v4.3](https://getbootstrap.com/)
+
+## Setup
+To use it, just copy the files in [src/components](src/components), to your Vue project.
 
 ## The component source code
 The files are located in folder [src/components](src/components)  
