@@ -45,7 +45,7 @@ I made it mainly by VueJS and bootstrap-vue. You should have some beginner knowl
 ## How to use
 ### Concept
 It is simple, organisation chart is composed of node and branch.  
-![node and branch](doc/images/concept1.png | width=100)
+![node and branch](doc/images/concept1.png){:height="auto" width="100px"}
 ### Action
 All we have to do is jsonify the node and branch, and input them to OrgChart Vue Component.  
 ### Json guide
