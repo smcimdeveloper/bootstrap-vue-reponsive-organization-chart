@@ -37,6 +37,14 @@ Vue.component("org-chart-desktop", {
   props: {
     orgChart_data: Object
   },
+  computed:{
+    isIOS:function(){
+      return /iPhone|iPad|iPod/i.test(navigator.userAgent);
+    },
+    isIE:function(){
+      return (window.document.documentMode) ? true : false;
+    }
+  },
   methods: {
     fitOrgChartWithWrapper: function() {
       const orgchart_wrapper = this.$refs.orgChartDesktopWrapper;
