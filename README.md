@@ -12,6 +12,7 @@ My project is a frontend only static website, so I borrow their CSS and start to
 
 
 ## At a glance what it can do
+You can see this example code at [example_1](examples/example_1)
 ![At a glance](doc/images/glance.gif)
 
 ## Browser compatibility
@@ -34,18 +35,18 @@ I made it mainly by VueJS and bootstrap-vue. You should have some beginner knowl
     <link type="text/css" rel="stylesheet" href="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.css" />
 
     <!-- Load Vue followed by BootstrapVue -->
-    <script defer src="//unpkg.com/vue@latest/dist/vue.min.js"></script>
-    <script defer src="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.js"></script>
+    <script src="//unpkg.com/vue@latest/dist/vue.min.js"></script>
+    <script src="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.js"></script>
 
     <!-- OrgChart css and js -->
     <link rel="stylesheet" href="OrgChart.css">
-    <script defer src="OrgChart.js"></script>    
+    <script src="OrgChart.js"></script>    
 ```
 
 ## How to use
 ### Concept
 It is simple, organisation chart is composed of node and branch.  
-![node and branch](doc/images/concept1.png){:height="auto" width="100px"}
+![node and branch](doc/images/concept1.png)
 ### Action
 All we have to do is jsonify the node and branch, and input them to OrgChart Vue Component.  
 ### Json guide
@@ -57,7 +58,47 @@ All we have to do is jsonify the node and branch, and input them to OrgChart Vue
 ![](doc/railroad_diagram/node_data.png)
 ![](doc/railroad_diagram/branches.png)
 ![](doc/railroad_diagram/branches_vertical_breakpoint.png)
+### sample code
+Below is the sample code, which will output  
+![sample output mobile](doc/images/sample_output_mobile.png) ![sample output](doc/images/sample_output.png)
+```html
+<body>
+    <style>
+    .myNode{ border: solid 1px black;}
+    .redNode{ color:red; }
+    .greenNode{ color:green; }
+    .blueNode{  color:blue;  }
+    </style>
 
+    <div id="app">
+        <org-chart :org-chart_data="myOrgData"></org-chart>
+    </div>
+
+    <script>
+        const myNode={html:'<div>node</div>'};
+        myNode.classes='myNode';
+        const redNode={...myNode};
+        redNode.classes+=' redNode';
+        const greenNode={...myNode};
+        greenNode.classes+=' greenNode';
+        const blueNode={...myNode};
+        blueNode.classes+=' blueNode';
+        const myOrgData={
+            root:{
+                node:redNode,
+                branches:[
+                    {node:greenNode},
+                    {node:blueNode}
+                ]
+            }
+        };
+        new Vue({
+            el:'#app',
+            data:{myOrgData}
+        });
+    </script>
+</body>
+```
 ## to do....
 + beautify the example
 + make more example
