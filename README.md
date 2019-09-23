@@ -72,6 +72,7 @@ value : "sm" | "md" | "lg" | "xl"
 default : "sm"  
 Usage : The org chart will be shown in 1 of 2 forms, collapsed boxes or tree form, depend on the screen width. Here the breakpoint setting to determine the width value to switch form.  
 ![](doc/images/mobile_breakpoint.gif)
+
 value|screen width (px)
 ---|---
 "sm" | 576
