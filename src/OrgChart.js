@@ -1,6 +1,6 @@
 Vue.component("org-chart", {
   template: `
-        <div>
+      <div>
         <org-chart-desktop class="d-none" :class="desktop_display_class" :orgChart_data="orgChart_data"></org-chart-desktop>
         <org-chart-mobile class="d-flex" :class="mobile_hidden_class" :orgChart_data="orgChart_data"></org-chart-mobile>
       </div>
@@ -27,22 +27,20 @@ Vue.component("org-chart-desktop", {
   template: `
 <div class="orgChartDesktopWrapper" ref="orgChartDesktopWrapper">
 <ul class="orgChartDesktop" ref="orgChartDesktop">
-    <li class="orgChartDesktopRoot orgChartDesktopBranch">
-        <org-chart-desktop-node :node_data="orgChart_data.root.node"></org-chart-desktop-node>
-        <org-chart-desktop-branches :branches="orgChart_data.root.branches"></org-chart-desktop-branches>
-    </li>
+  <org-chart-desktop-branch class="orgChartDesktopRoot" :branch_data="branch_data"></org-chart-desktop-branch>        
 </ul>
 </div>
 `,
   props: {
     orgChart_data: Object
   },
-  computed:{
-    isIOS:function(){
-      return /iPhone|iPad|iPod/i.test(navigator.userAgent);
-    },
-    isIE:function(){
-      return (window.document.documentMode) ? true : false;
+  computed: {
+    branch_data: function() {
+      const foo = { node: this.orgChart_data.root.node };
+      if (this.orgChart_data.root.hasOwnProperty("branches")) {
+        foo.branches = this.orgChart_data.root.branches;
+      }
+      return foo;
     }
   },
   methods: {
@@ -91,38 +89,43 @@ Vue.component("org-chart-desktop", {
   }
 });
 
+Vue.component("org-chart-desktop-branch", {
+  template: `
+  <li class="orgChartDesktopBranch" :class="branch_class">
+    <org-chart-desktop-node :node_data="branch_data.node"></org-chart-desktop-node>
+    <org-chart-desktop-branches v-if="branch_data.hasOwnProperty('branches')" :branches_data="branch_data.branches"></org-chart-desktop-branches>  
+  </li>
+  `,
+  props: {
+    branch_data: Object
+  },
+  computed: {
+    branch_class: function() {
+      // default assume it is leaf, has no sub branches
+      let foo = "orgChartDesktopLeaf";
+      if (this.branch_data.hasOwnProperty("branches")) {
+        // if it has sub branches, it must not a leaf
+        foo = "";
+        if (this.branch_data.branches.hasOwnProperty("vertical_breakpoint")) {
+          // the sub branches can be in vertical mode at breakpoints :
+          // sm, md, lg, xl
+          // * : force vertical mode
+          foo = `orgChartDesktop-${this.branch_data.branches.vertical_breakpoint}-vBranch`;
+        }
+      }
+      return foo;
+    }
+  }
+});
+
 Vue.component("org-chart-desktop-branches", {
   template: `
 <ul class="orgChartDesktopBranches">
-<li v-for="(branch,index) in branches_parsed" class="orgChartDesktopBranch" :class="branch.branch_class" :key="index">
-    <org-chart-desktop-node :node_data="branch.node"></org-chart-desktop-node>
-    <org-chart-desktop-branches v-if="branch.hasSubBranches" :branches="branch.branches"></org-chart-desktop-branches>
-</li>
+  <org-chart-desktop-branch v-for="(branch,index) in branches_data.items" :branch_data="branch" :key="index"></org-chart-desktop-branch>
 </ul>
 `,
   props: {
-    branches: Array
-  },
-  computed: {
-    branches_parsed: function() {
-      return this.branches.map(function(branch) {
-        // default assume it is leaf, has no sub branches
-        branch.hasSubBranches = false;
-        branch.branch_class = "orgChartDesktopLeaf";
-        if (branch.hasOwnProperty("branches")) {
-          // if it has sub branches, it must not a leaf
-          branch.hasSubBranches = true;
-          branch.branch_class = "";
-          if (branch.hasOwnProperty("branches_vertical_breakpoint")) {
-            // the sub branches can be in vertical mode at breakpoints :
-            // sm, md, lg, xl
-            // all : all breakpoints above
-            branch.branch_class = `orgChartDesktop-${branch.branches_vertical_breakpoint}-vBranch`;
-          }
-        }
-        return branch;
-      });
-    }
+    branches_data: Object
   }
 });
 

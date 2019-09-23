@@ -1,0 +1,5 @@
+ComplexDiagram(
+  Comment('vertical_breakpoint'),
+  'vertical_breakpoint :',
+  Choice(0,'"sm"','"md"','"lg"','"xl"','"*"')
+)

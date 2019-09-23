@@ -1,5 +1,0 @@
-ComplexDiagram(
-  Comment('branches_vertical_breakpoint'),
-  'branches_vertical_breakpoint :',
-  Choice(0,'"sm"','"md"','"lg"','"xl"','"all"')
-)

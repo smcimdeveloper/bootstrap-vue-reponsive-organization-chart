@@ -3,7 +3,7 @@ ComplexDiagram(
   '{',
   'node :',NonTerminal('node_data'),
   Optional(
-    Sequence(',',NonTerminal('branches'),Optional(Sequence(',',NonTerminal('branches_vertical_breakpoint')))),
+    Sequence(',','branches :',NonTerminal('branches_data')),
   ),
   '}'
 )

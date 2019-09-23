@@ -82,8 +82,12 @@ value|screen width (px)
 
 ![](doc/railroad_diagram/branch_data.png)
 ![](doc/railroad_diagram/node_data.png)
-![](doc/railroad_diagram/branches.png)
-![](doc/railroad_diagram/branches_vertical_breakpoint.png)
+**node_data**  
+html : content of each node in html   
+classes : assign class, so you can apply css style   
+link : URL value, if it exist, the node will be a link    
+![](doc/railroad_diagram/branches_data.png)
+![](doc/railroad_diagram/vertical_breakpoint.png)
 ### sample code
 Below is the sample code, which will output  
 ![sample output mobile](doc/images/sample_output_mobile.png) ![sample output](doc/images/sample_output.png)
