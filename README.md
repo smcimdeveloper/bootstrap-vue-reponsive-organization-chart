@@ -65,21 +65,19 @@ All we have to do is create a javascript object to store all nodes and branches,
 
 ![](doc/railroad_diagram/orgChart_data.png)
 ![](doc/railroad_diagram/mobile_breakpoint.png)
-**mobile_breakpoint**  
-type : <span style="color:orange">String</span>  
-value : <span style="color:orange">"sm"</span> | 
-<span style="color:orange">"md"</span> | 
-<span style="color:orange">"lg"</span> | 
-<span style="color:orange">"xl"</span>  
-default : <span style="color:orange">"sm"</span>  
-Usage : The org chart will be shown in 1 of 2 forms, collapsed boxes or tree form, depend on the screen width. Here the breakpoint setting to determine the width value to switch form.  
 
-|
+**mobile_breakpoint**  
+type : String  
+value : "sm" | "md" | "lg" | "xl"  
+default : "sm"  
+Usage : The org chart will be shown in 1 of 2 forms, collapsed boxes or tree form, depend on the screen width. Here the breakpoint setting to determine the width value to switch form.  
+![](doc/images/mobile_breakpoint.gif)
+value|screen width (px)
 ---|---
-<span style="color:orange">"sm"</span> | 
-<span style="color:orange">"md"</span> | 
-<span style="color:orange">"lg"</span> | 
-<span style="color:orange">"xl"</span> | 
+"sm" | 576
+"md" | 768
+"lg" | 992
+"xl" | 1200
 
 ![](doc/railroad_diagram/branch_data.png)
 ![](doc/railroad_diagram/node_data.png)
