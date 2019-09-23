@@ -150,12 +150,15 @@ Vue.component("org-chart-mobile", {
   template: `
 <div class="flex-column justify-content-center align-items-center w-100">
 <b-button @click="btn_click">{{btn_label}}</b-button>
+<org-chart-mobile-branch class="orgChartMobile my-3 w-100" :branch_data="branch_data"></org-chart-mobile-branch>
+<!--
 <div class="orgChartMobile my-3 w-100">
     <org-chart-mobile-node
     :collapse_id="get_root_collapse_id"
     :node_data="orgChart_data.root.node" 
     :hasMoreBranches=true
     :level=0></org-chart-mobile-node>
+
     <org-chart-mobile-branches 
     :boxes_status="boxes_status"
     @collapseChanged="collapsed_changed()"
@@ -163,6 +166,7 @@ Vue.component("org-chart-mobile", {
     :parent_collapse_id="get_root_collapse_id"
     :level=1 ></org-chart-mobile-branches>
 </div>
+-->
 </div>
 `,
   props: {
@@ -248,6 +252,26 @@ Vue.component("org-chart-mobile", {
     this.boxes_status.vue = this;
   }
 });
+Vue.component('org-chart-mobile-branch',{
+  template:`
+  <div>
+  <org-chart-mobile-node
+  :collapse_id="get_root_collapse_id"
+  :node_data="orgChart_data.root.node" 
+  :hasMoreBranches=true
+  :level=0></org-chart-mobile-node>
+  <org-chart-mobile-branches 
+  :boxes_status="boxes_status"
+  @collapseChanged="collapsed_changed()"
+  :branches="orgChart_data.root.branches" 
+  :parent_collapse_id="get_root_collapse_id"
+  :level=1 ></org-chart-mobile-branches>
+  </div>
+  `,
+  props:{
+    branch_data:Object
+  },
+});
 
 Vue.component("org-chart-mobile-branches", {
   template: `
@@ -258,16 +282,15 @@ Vue.component("org-chart-mobile-branches", {
         :collapse_id="branch.collapse_id"
         :node_data="branch.node"
         :hasMoreBranches="branch.hasMoreBranches"
-        :level="level">
-        </org-chart-mobile-node>
+        :level="level"></org-chart-mobile-node>
+
         <org-chart-mobile-branches
         :boxes_status="boxes_status"
         @collapseChanged="collapsedChangedEmit2parent()"
         v-if="branch.hasMoreBranches"
         :branches="branch.branches"
         :parent_collapse_id="branch.nobody?parent_collapse_id:branch.collapse_id"
-        :level="branches_level_next">
-        </org-chart-mobile-branches>
+        :level="branches_level_next"></org-chart-mobile-branches>
     </div>
 </b-collapse>    
     `,
