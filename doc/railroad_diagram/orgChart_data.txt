@@ -1,6 +1,6 @@
 ComplexDiagram(
 Comment('orgChart_data'),'{',
-    Optional(Sequence(NonTerminal('mobile_breakpoint'),',')),
+    Choice(0,Comment('(default) mobile_breakpoint:"sm"'),Sequence(NonTerminal('mobile_breakpoint'),',')),
     Sequence('root : ',NonTerminal('branch_data')),
   '}'
 )

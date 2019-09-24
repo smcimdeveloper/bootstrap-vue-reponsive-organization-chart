@@ -101,26 +101,26 @@
 
 /*vertical nodes*/
 
-.orgChartDesktop-all-vBranch>.orgChartDesktopBranches {
+.orgChartDesktop-vBranch>.orgChartDesktopBranches {
     flex-direction: column;
     align-items: flex-start;
     margin: 0 5px;
     position: relative;
 }
 
-.orgChartDesktop-all-vBranch>.orgChartDesktopBranches>.orgChartDesktopBranch>.orgChartDesktopNode {
+.orgChartDesktop-vBranch>.orgChartDesktopBranches>.orgChartDesktopBranch>.orgChartDesktopNode {
     margin: 10px 0 0 10px;
     width: calc(100% - 8px);
     min-height:auto;
 }    
 
-.orgChartDesktop-all-vBranch>.orgChartDesktopBranches{
+.orgChartDesktop-vBranch>.orgChartDesktopBranches{
     align-items: stretch;
 }
 
 /*vertical connectors*/
 
-.orgChartDesktop-all-vBranch>.orgChartDesktopBranches::before {
+.orgChartDesktop-vBranch>.orgChartDesktopBranches::before {
     box-sizing: border-box;
     content: '';
     position: absolute;
@@ -131,7 +131,7 @@
     border-top: 2px solid #CCCCCC;
 }
 
-.orgChartDesktop-all-vBranch>.orgChartDesktopNode::after {
+.orgChartDesktop-vBranch>.orgChartDesktopNode::after {
     border-width: 0 2px 2px 0;
     border-bottom-right-radius: 7px;
     width: 10px;
@@ -139,7 +139,7 @@
     right: calc(50% - 1px);
 }
 
-.orgChartDesktop-all-vBranch>.orgChartDesktopBranches>.orgChartDesktopBranch::before {
+.orgChartDesktop-vBranch>.orgChartDesktopBranches>.orgChartDesktopBranch::before {
     border-width: 0 0 0 2px;
     left: 0px;
     height: 100%;
@@ -147,20 +147,20 @@
     border-radius: 0;
 }
 
-.orgChartDesktop-all-vBranch>.orgChartDesktopBranches>.orgChartDesktopBranch:first-child::before {
+.orgChartDesktop-vBranch>.orgChartDesktopBranches>.orgChartDesktopBranch:first-child::before {
     top: -2px;
     height: calc(100% + 2px);
     border-top-width: 2px;
     border-top-left-radius: 7px;
 }
 
-.orgChartDesktop-all-vBranch>.orgChartDesktopBranches>.orgChartDesktopBranch:last-child::before {
+.orgChartDesktop-vBranch>.orgChartDesktopBranches>.orgChartDesktopBranch:last-child::before {
     height: calc(50% + 6px);
     border-bottom-width: 2px;
     border-bottom-left-radius: 7px;
 }
 
-.orgChartDesktop-all-vBranch>.orgChartDesktopBranches>.orgChartDesktopBranch>.orgChartDesktopNode::before {
+.orgChartDesktop-vBranch>.orgChartDesktopBranches>.orgChartDesktopBranch>.orgChartDesktopNode::before {
     height: 2px;
     width: 8px;
     top: calc(50% - 1px);
@@ -168,7 +168,7 @@
     border-width: 2px 0 0 0;
 }
 
-.orgChartDesktop-all-vBranch>.orgChartDesktopBranches>.orgChartDesktopBranch:last-child>.orgChartDesktopNode::before {
+.orgChartDesktop-vBranch>.orgChartDesktopBranches>.orgChartDesktopBranch:last-child>.orgChartDesktopNode::before {
     display: none;
 }
 

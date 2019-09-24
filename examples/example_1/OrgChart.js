@@ -110,7 +110,11 @@ Vue.component("org-chart-desktop-branch", {
           // the sub branches can be in vertical mode at breakpoints :
           // sm, md, lg, xl
           // * : force vertical mode
-          foo = `orgChartDesktop-${this.branch_data.branches.vertical_breakpoint}-vBranch`;
+          if ('*'==this.branch_data.branches.vertical_breakpoint){
+            foo = `orgChartDesktop-vBranch`;
+          }else{
+            foo = `orgChartDesktop-${this.branch_data.branches.vertical_breakpoint}-vBranch`;
+          }
         }
       }
       return foo;
@@ -149,24 +153,8 @@ Vue.component("org-chart-desktop-node", {
 Vue.component("org-chart-mobile", {
   template: `
 <div class="flex-column justify-content-center align-items-center w-100">
-<b-button @click="btn_click">{{btn_label}}</b-button>
-<org-chart-mobile-branch class="orgChartMobile my-3 w-100" :branch_data="branch_data"></org-chart-mobile-branch>
-<!--
-<div class="orgChartMobile my-3 w-100">
-    <org-chart-mobile-node
-    :collapse_id="get_root_collapse_id"
-    :node_data="orgChart_data.root.node" 
-    :hasMoreBranches=true
-    :level=0></org-chart-mobile-node>
-
-    <org-chart-mobile-branches 
-    :boxes_status="boxes_status"
-    @collapseChanged="collapsed_changed()"
-    :branches="orgChart_data.root.branches" 
-    :parent_collapse_id="get_root_collapse_id"
-    :level=1 ></org-chart-mobile-branches>
-</div>
--->
+  <b-button @click="btn_click">{{btn_label}}</b-button>
+  <org-chart-mobile-branch class="orgChartMobile my-3 w-100" :branch_data="branch_data" :boxes_status="boxes_status" :level="0"></org-chart-mobile-branch>
 </div>
 `,
   props: {
@@ -174,39 +162,38 @@ Vue.component("org-chart-mobile", {
   },
   data: function() {
     return {
-      root_collapse_id: "",
       btnState: "showall",
       boxes_status: {
         ids: {},
-        vue: {},
-        addId: function(id) {
+        thisComponent: {},
+        newId: function() {
+          const id=this.id_generator();
           this.ids[id] = { isopen: false };
+          return id;
         },
         showall: function() {
           const ids = this.ids;
-          const vue = this.vue;
           Object.keys(ids).forEach(key => {
             if (false == ids[key]["isopen"])
-              vue.$root.$emit("bv::toggle::collapse", key);
+              this.thisComponent.$root.$emit("bv::toggle::collapse", key);
           });
         },
         hideall: function() {
           const ids = this.ids;
-          const vue = this.vue;
           Object.keys(ids).forEach(key => {
             if (ids[key]["isopen"])
-              vue.$root.$emit("bv::toggle::collapse", key);
+              this.thisComponent.$root.$emit("bv::toggle::collapse", key);
           });
         },
         update: function(id, isopen) {
           this.ids[id]["isopen"] = isopen;
         },
-        btnState: function() {
+        refreshBtnState: function() {
           let result = "hideall";
           Object.keys(this.ids).forEach(key => {
             if (false == this.ids[key]["isopen"]) result = "showall";
           });
-          return result;
+          this.thisComponent.btnState=result;
         },
         id_generator: function() {
           let result = "";
@@ -228,17 +215,15 @@ Vue.component("org-chart-mobile", {
     btn_click: function() {
       if ("showall" == this.btnState) this.boxes_status.showall();
       else this.boxes_status.hideall();
-    },
-    collapsed_changed: function() {
-      this.btnState = this.boxes_status.btnState();
     }
   },
   computed: {
-    get_root_collapse_id: function() {
-      if (this.root_collapse_id) return this.root_collapse_id;
-      this.root_collapse_id = this.boxes_status.id_generator();
-      this.boxes_status.addId(this.root_collapse_id);
-      return this.root_collapse_id;
+    branch_data: function() {
+      const foo = { node: this.orgChart_data.root.node };
+      if (this.orgChart_data.root.hasOwnProperty("branches")) {
+        foo.branches = this.orgChart_data.root.branches;
+      }
+      return foo;
     },
     btn_label: function() {
       const label = {
@@ -249,83 +234,89 @@ Vue.component("org-chart-mobile", {
     }
   },
   created() {
-    this.boxes_status.vue = this;
+    this.boxes_status.thisComponent = this;
   }
 });
+
 Vue.component('org-chart-mobile-branch',{
   template:`
   <div>
-  <org-chart-mobile-node
-  :collapse_id="get_root_collapse_id"
-  :node_data="orgChart_data.root.node" 
-  :hasMoreBranches=true
-  :level=0></org-chart-mobile-node>
-  <org-chart-mobile-branches 
-  :boxes_status="boxes_status"
-  @collapseChanged="collapsed_changed()"
-  :branches="orgChart_data.root.branches" 
-  :parent_collapse_id="get_root_collapse_id"
-  :level=1 ></org-chart-mobile-branches>
+    <org-chart-mobile-node
+    v-if="false==isNoBody"
+    :collapse_id="get_collapse_id"
+    :node_data="branch_data.node" 
+    :hasMoreBranches="hasMoreBranches"
+    :level="level"></org-chart-mobile-node>
+    <org-chart-mobile-branches 
+    v-if="hasMoreBranches"
+    :boxes_status="boxes_status"
+    @collapseChanged="collapsed_changed"
+    :branches_data="branch_data.branches" 
+    :parent_collapse_id="isNoBody?parent_collapse_id:get_collapse_id"
+    :level="level + 1" ></org-chart-mobile-branches>
   </div>
   `,
   props:{
-    branch_data:Object
+    branch_data:Object,
+    parent_collapse_id:String,
+    boxes_status:Object,
+    level:Number,
   },
+  data:function(){
+    return {
+      collapse_id:'',
+    }
+  },
+  computed:{
+    isNoBody:function(){
+      if (this.branch_data.node.hasOwnProperty('classes')){
+        return this.branch_data.node.classes.includes("nobody_line");
+      }
+      return false;
+    },
+    hasMoreBranches:function(){
+      return this.branch_data.hasOwnProperty('branches');
+    },
+    get_collapse_id: function() {
+      if (this.collapse_id) {
+        return this.collapse_id;
+      }
+      if (false==this.isNoBody && this.hasMoreBranches){
+        this.collapse_id = this.boxes_status.newId();
+      }
+      return this.collapse_id;
+    },
+  },
+  methods:{
+    collapsed_changed:function(){
+      this.boxes_status.refreshBtnState();
+    },
+  }
+  
 });
 
 Vue.component("org-chart-mobile-branches", {
   template: `
-    <b-collapse :id="parent_collapse_id" :class="branches_class" @shown="collapse_isopen(true)" @hidden="collapse_isopen(false)">
-    <div v-for="(branch,index) in branches_parsed" :key="index">
-        <org-chart-mobile-node
-        v-if="false==branch.nobody"
-        :collapse_id="branch.collapse_id"
-        :node_data="branch.node"
-        :hasMoreBranches="branch.hasMoreBranches"
-        :level="level"></org-chart-mobile-node>
-
-        <org-chart-mobile-branches
-        :boxes_status="boxes_status"
-        @collapseChanged="collapsedChangedEmit2parent()"
-        v-if="branch.hasMoreBranches"
-        :branches="branch.branches"
-        :parent_collapse_id="branch.nobody?parent_collapse_id:branch.collapse_id"
-        :level="branches_level_next"></org-chart-mobile-branches>
-    </div>
-</b-collapse>    
+  <b-collapse :id="parent_collapse_id" :class="branches_class" @shown="collapse_isopen(true)" @hidden="collapse_isopen(false)">
+    <org-chart-mobile-branch v-for="(branch,index) in branches_data.items" :branch_data="branch" :key="index" :parent_collapse_id="parent_collapse_id" :boxes_status="boxes_status" :level="level"></org-chart-mobile-branch>
+  </b-collapse>    
     `,
   props: {
+    branches_data:Object,
     boxes_status: Object,
-    branches: Array,
     parent_collapse_id: String,
-    level: Number
+    level: Number,
   },
   computed: {
-    branches_parsed: function() {
-      return this.branches.map(branch => {
-        branch.collapse_id = this.boxes_status.id_generator();
-        branch.hasMoreBranches = branch.hasOwnProperty("branches");
-        branch.nobody = branch.node.classes.includes("nobody_line");
-        if (branch.hasMoreBranches && false == branch.nobody)
-          this.boxes_status.addId(branch.collapse_id);
-        return branch;
-      });
-    },
     branches_class: function() {
       return `branches_level${this.level}`;
     },
-    branches_level_next: function() {
-      return this.level + 1;
-    }
   },
   methods: {
     collapse_isopen: function(isopen) {
       this.boxes_status.update(this.parent_collapse_id, isopen);
       this.$emit("collapseChanged");
     },
-    collapsedChangedEmit2parent() {
-      this.$emit("collapseChanged");
-    }
   }
 });
 
