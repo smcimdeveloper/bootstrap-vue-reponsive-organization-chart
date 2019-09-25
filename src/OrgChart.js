@@ -41,7 +41,13 @@ Vue.component("org-chart-desktop", {
         foo.branches = this.orgChart_data.root.branches;
       }
       return foo;
-    }
+    },
+    isIOS:function(){
+      return /iPhone|iPad|iPod/i.test(navigator.userAgent);
+    },
+    isIE:function(){
+      return (window.document.documentMode) ? true : false;
+    },
   },
   methods: {
     fitOrgChartWithWrapper: function() {
@@ -60,7 +66,10 @@ Vue.component("org-chart-desktop", {
       }
     },
     initCSS: function() {
-      const orgchart = this.$refs.gldOrgChart;
+      const orgchart = this.$refs.orgChartDesktop;
+      if (this.orgChart_data.hasOwnProperty("connector_color")){
+        orgchart.style.setProperty("--connector-color",this.orgChart_data.connector_color);
+      }
       if (this.isIE) {
         // fix IE render problem
         orgchart.style.setProperty("transform-origin", "top left");
@@ -68,7 +77,7 @@ Vue.component("org-chart-desktop", {
       }
       if (this.isIOS) {
         // fix IOS render problem
-        orgchart.querySelectorAll(".gld_org_chart_node").forEach(function(ele) {
+        orgchart.querySelectorAll(".orgChartDesktopNode").forEach(function(ele) {
           ele.style.setProperty("display", "block", "important");
           ele.style.setProperty("height", "auto", "important");
         });

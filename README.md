@@ -17,7 +17,7 @@ You can see this example code at [example_1](examples/example_1)
 
 ## Browser compatibility
 Modern browser support ES6, FlexBox css.  
-You can transpile the js into ES5 to running in IE11, actually I have done this before and work, but I will not support IE11 anymore.
+You can transpile the js into ES5 to running in IE11, actually I have done this before in earlier version and work, but I will not support IE11 anymore.  
 Please let me know if your browser don't work.
 
 ## Prerequisites
@@ -75,7 +75,6 @@ type : String
 value : "sm" | "md" | "lg" | "xl"  
 default : "sm"  
 Usage : The org chart will be shown in 1 of 2 forms, collapsed boxes or tree form, depend on the screen width. Here the breakpoint setting to determine the width value to switch form.  
-![](doc/images/mobile_breakpoint.gif)  
 
 value|screen width (px)
 ---|---
@@ -83,7 +82,11 @@ value|screen width (px)
 "md" | 768
 "lg" | 992
 "xl" | 1200
-
+![](doc/images/mobile_breakpoint.gif)  
+**connector_color**  
+type : String
+value : any css color value in string
+default : "#cccccc"  
 ![](doc/railroad_diagram/branch_data.png)  
 ![](doc/railroad_diagram/node_data.png)  
 **node_data**  
