@@ -10,6 +10,7 @@
     padding: 0;
     margin: 0;
     transform-origin:top center;
+    --connector-color:#CCCCCC;
 }
 
 
@@ -48,7 +49,8 @@
     content: '';
     position: absolute;
     z-index: -1;
-    border: 0px solid #CCCCCC;
+    border: 0px solid;
+    border-color: var(--connector-color);
 }
 
 
@@ -128,7 +130,8 @@
     left: 10px;
     height: 10px;
     width: calc(50% - 19px);
-    border-top: 2px solid #CCCCCC;
+    border-top: 2px solid;
+    border-top-color: var(--connector-color);
 }
 
 .orgChartDesktop-vBranch>.orgChartDesktopNode::after {
@@ -202,7 +205,8 @@
         left: 10px;
         height: 10px;
         width: calc(50% - 19px);
-        border-top: 2px solid #CCCCCC;
+        border-top: 2px solid;
+        border-top-color: var(--connector-color);
     }
 
     .orgChartDesktop-sm-vBranch>.orgChartDesktopNode::after {
@@ -277,7 +281,8 @@
         left: 10px;
         height: 10px;
         width: calc(50% - 19px);
-        border-top: 2px solid #CCCCCC;
+        border-top: 2px solid;
+        border-top-color: var(--connector-color);
     }
 
     .orgChartDesktop-md-vBranch>.orgChartDesktopNode::after {
@@ -352,7 +357,8 @@
         left: 10px;
         height: 10px;
         width: calc(50% - 19px);
-        border-top: 2px solid #CCCCCC;
+        border-top: 2px solid;
+        border-top-color: var(--connector-color);
     }
 
     .orgChartDesktop-lg-vBranch>.orgChartDesktopNode::after {
@@ -428,7 +434,8 @@
         left: 10px;
         height: 10px;
         width: calc(50% - 19px);
-        border-top: 2px solid #CCCCCC;
+        border-top: 2px solid;
+        border-top-color: var(--connector-color);
     }
 
     .orgChartDesktop-xl-vBranch>.orgChartDesktopNode::after {
@@ -480,8 +487,10 @@
     padding:0px;
     width:1px!important;
     min-width:0px!important;
-    border-left:1px #ccc solid;
-    border-right:1px #ccc solid;
+    border-left:1px solid;
+    border-right:1px solid;
+    border-left-color: var(--connector-color);
+    border-right-color: var(--connector-color);
 }
 
 
