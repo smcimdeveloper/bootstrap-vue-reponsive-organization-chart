@@ -1,26 +1,25 @@
-function createNode({ classes = "", html = "", link = "" }) {
+function createNode({
+  classes = "",
+  photo = "",
+  name = "",
+  title = "",
+  tel = "",
+  email = "",
+  duties = ""
+}) {
   return {
     classes,
-    html,
-    link
+    html
   };
 }
 
-const commissioner = createNode({
-  classes: "area1",
-  link: "https://www.labour.gov.hk/eng/organ/programmen.htm#area1",
-  html: `
-        <div class="d-flex title">
-            <img src="./android19.png" style="max-height:100px;flex-basis:25%" class="img-fluid mr-3" ></img>
-            <div>
-              Commissioner for Labour
-            </div>
-        </div>
-        <div class="person">
-            Mr C Chan<br>
-            Tel: 2852 3688
-        </div>        
-        `
+const gcio = createNode({
+  classes: "gcio",
+  photo: "gcio.jpg",
+  name: "Mr. Victor Lam, JP",
+  title: "Government Chief Information Officer",
+  tel:"2810 2611",
+  email:"vlam@ogcio.gov.hk"
 });
 
 const deputy_commissioner_la = createNode({
@@ -122,7 +121,10 @@ const occupational_health_consultant_2 = createNode({
         `
 });
 
-const nobody1=createNode({classes:"nobody_line",html:'<div style="height:8em"></div>'});
+const nobody1 = createNode({
+  classes: "nobody_line",
+  html: '<div style="height:8em"></div>'
+});
 
 const chief_labour_officer_lr = createNode({
   classes: "area4",
@@ -174,7 +176,6 @@ const chief_occupational_safety_officer_o = createNode({
         `
 });
 
-
 const chief_occupational_safety_officer_ss = createNode({
   classes: "area4",
   link: "https://www.labour.gov.hk/eng/organ/programmen.htm#area4",
@@ -185,11 +186,10 @@ const chief_occupational_safety_officer_ss = createNode({
         `
 });
 
-
 const data = {
   orgChart_data: {
     mobile_breakpoint: "sm",
-    connector_color:"black",
+    connector_color: "black",
     root: {
       node: commissioner,
       branches: {
@@ -200,40 +200,40 @@ const data = {
               items: [
                 {
                   node: assistant_commissioner_lr,
-                  branches:{
-                    vertical_breakpoint:"lg",
-                    items:[
+                  branches: {
+                    vertical_breakpoint: "lg",
+                    items: [
                       {
-                        node:chief_labour_officer_lr
+                        node: chief_labour_officer_lr
                       },
                       {
-                        node:chief_labour_officer_op
+                        node: chief_labour_officer_op
                       }
                     ]
                   }
                 },
                 {
-                  node:assistant_commissioner_es
+                  node: assistant_commissioner_es
                 },
                 {
-                  node:assistant_commissioner_erb
+                  node: assistant_commissioner_erb
                 },
                 {
-                  node:assistant_commissioner_ps,
-                  branches:{
-                    items:[
+                  node: assistant_commissioner_ps,
+                  branches: {
+                    items: [
                       {
-                        node:chief_labour_officer_whp
+                        node: chief_labour_officer_whp
                       }
                     ]
                   }
                 },
                 {
-                  node:assistant_commissioner_d,
-                  branches:{
-                    items:[
+                  node: assistant_commissioner_d,
+                  branches: {
+                    items: [
                       {
-                        node:chief_labour_officer_smw
+                        node: chief_labour_officer_smw
                       }
                     ]
                   }
@@ -241,37 +241,38 @@ const data = {
               ]
             }
           },
-          { node: deputy_commissioner_osh,
-          branches:{
-            items:[
-              {
-                node:assistant_commissioner_os,
-                branches:{
-                  items:[
-                    {
-                      node:chief_occupational_safety_officer_o
-                    }
-                  ]
+          {
+            node: deputy_commissioner_osh,
+            branches: {
+              items: [
+                {
+                  node: assistant_commissioner_os,
+                  branches: {
+                    items: [
+                      {
+                        node: chief_occupational_safety_officer_o
+                      }
+                    ]
+                  }
+                },
+                {
+                  node: nobody1,
+                  branches: {
+                    items: [
+                      {
+                        node: chief_occupational_safety_officer_ss
+                      }
+                    ]
+                  }
+                },
+                {
+                  node: occupational_health_consultant_1
+                },
+                {
+                  node: occupational_health_consultant_2
                 }
-              },
-              {
-                node:nobody1,
-                branches:{
-                  items:[
-                    {
-                      node:chief_occupational_safety_officer_ss
-                    }
-                  ]              
-                }
-              },
-              {
-                node:occupational_health_consultant_1
-              },
-              {
-                node:occupational_health_consultant_2
-              }
-            ]
-          }
+              ]
+            }
           }
         ]
       }
