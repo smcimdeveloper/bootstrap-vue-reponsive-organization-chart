@@ -85,8 +85,8 @@ value|screen width (px)
 
 ![](doc/images/mobile_breakpoint.gif)  
 **connector_color**  
-type : String
-value : any css color value in string
+type : String  
+value : any css color value in string  
 default : "#cccccc"  
 ![](doc/railroad_diagram/branch_data.png)  
 ![](doc/railroad_diagram/node_data.png)  
