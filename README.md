@@ -82,6 +82,7 @@ value|screen width (px)
 "md" | 768
 "lg" | 992
 "xl" | 1200
+
 ![](doc/images/mobile_breakpoint.gif)  
 **connector_color**  
 type : String
@@ -107,6 +108,7 @@ value|screen width (px)
 "lg" | 992
 "xl" | 1200
 "*"  | force to vertical
+
 ```javascript
 // this is a sample to demo vertical_breakpoint
 const myOrgData = {
