@@ -62,7 +62,7 @@ const dgcio=createNode({
 const agcio_csd=createNode({
   classes:'agcio',
   name:'Mr. Jason Pun',
-  title:'Assistant Government Chief Information Officer (Cyber Security & Digital Identity)',
+  title:'Assistant Government Chief Information Officer<br>(Cyber Security & Digital Identity)',
   tel: '2810 2623',
   email : 'jskpun@ogcio.gov.hk',
   duties_link:'https://www.ogcio.gov.hk/en/about_us/org_chart/agcio_csd.html'
@@ -71,7 +71,7 @@ const agcio_csd=createNode({
 const csm_sec=createNode({
   classes:'csm',
   name:'Mr. Tony Wong',
-  title:'Chief Systems Manager (Cyber Security)',
+  title:'Chief Systems Manager<br>(Cyber Security)',
   tel: '2867 2036',
   email : 'tkmwong@ogcio.gov.hk',
   duties_link:'https://www.ogcio.gov.hk/en/about_us/org_chart/csm_sec.html'
@@ -80,7 +80,7 @@ const csm_sec=createNode({
 const csm_di=createNode({
   classes:'csm',
   name:'Mr. Simon Siu',
-  title:'Chief Systems Manager (Digital Identity)',
+  title:'Chief Systems Manager<br>(Digital Identity)',
   tel: '2867 4484',
   email : 'skwsiu@ogcio.gov.hk',
   duties_link:'https://www.ogcio.gov.hk/en/about_us/org_chart/csm_di.html'
@@ -89,7 +89,7 @@ const csm_di=createNode({
 const agcio_inf=createNode({
   classes:'agcio',
   name:'Mr. Donald Mak',
-  title:'Assistant Government Chief Information Officer (IT Infrastructure)',
+  title:'Assistant Government Chief Information Officer<br>(IT Infrastructure)',
   tel: '2810 2626',
   email : 'dckmak@ogcio.gov.hk',
   duties_link:'https://www.ogcio.gov.hk/en/about_us/org_chart/agcio_inf.html'
@@ -98,7 +98,7 @@ const agcio_inf=createNode({
 const csm_inf=createNode({
   classes:'csm',
   name:'Mr. KH Poon',
-  title:'Chief Systems Manager (IT Infrastructure)',
+  title:'Chief Systems Manager<br>(IT Infrastructure)',
   tel: '3182 6516',
   email : 'khpoon@ogcio.gov.hk',
   duties_link:'https://www.ogcio.gov.hk/en/about_us/org_chart/csm_inf.html'
@@ -107,7 +107,7 @@ const csm_inf=createNode({
 const csm_da=createNode({
   classes:'csm',
   name:'Mr. Anthony Chiu',
-  title:'Chief Systems Manager (Data Analytics)',
+  title:'Chief Systems Manager<br>(Data Analytics)',
   tel: '2867 4482',
   email : 'ashchiu@ogcio.gov.hk',
   duties_link:'https://www.ogcio.gov.hk/en/about_us/org_chart/csm_da.html'
@@ -116,7 +116,7 @@ const csm_da=createNode({
 const agcio_gr=createNode({
   classes:'agcio',
   name:'Mr. Kingsley Wong',
-  title:'Assistant Government Chief Information Officer (Governance & Resources)',
+  title:'Assistant Government Chief Information Officer<br>(Governance & Resources)',
   tel: '2810 2090',
   email : 'kkmwong@ogcio.gov.hk',
   duties_link:'https://www.ogcio.gov.hk/en/about_us/org_chart/agcio_gr.html'
@@ -125,7 +125,7 @@ const agcio_gr=createNode({
 const csm_gr=createNode({
   classes:'csm',
   name:'Mr. Gavin Wah',
-  title:'Chief Systems Manager (Governance & Resources)',
+  title:'Chief Systems Manager<br>(Governance & Resources)',
   tel: '2867 2628',
   email : 'gkkwah@ogcio.gov.hk',
   duties_link:'https://www.ogcio.gov.hk/en/about_us/org_chart/csm_gr.html'
@@ -134,7 +134,7 @@ const csm_gr=createNode({
 const csm_io=createNode({
   classes:'csm',
   name:'Mr. Patrick Chan',
-  title:'Chief Systems Manager (IT Operations)',
+  title:'Chief Systems Manager<br>(IT Operations)',
   tel: '2867 4483',
   email : 'pkkchan@ogcio.gov.hk',
   duties_link:'https://www.ogcio.gov.hk/en/about_us/org_chart/csm_io.html'
@@ -143,7 +143,7 @@ const csm_io=createNode({
 const agcio_id=createNode({
   classes:'agcio',
   name:'Mr. Tony Wong, JP',
-  title:'Assistant Government Chief Information Officer (Industry Development)',
+  title:'Assistant Government Chief Information Officer<br>(Industry Development)',
   tel: '2810 2610',
   email : 'tonywong@ogcio.gov.hk',
   duties_link:'https://www.ogcio.gov.hk/en/about_us/org_chart/agcio_id.html'
@@ -152,7 +152,7 @@ const agcio_id=createNode({
 const csm_id=createNode({
   classes:'csm',
   name:'Ms. Chrissie Ng',
-  title:'Chief Systems Manager (Industry Development)',
+  title:'Chief Systems Manager<br>(Industry Development)',
   tel: '2867 2422',
   email : 'cskng@ogcio.gov.hk',
   duties_link:'https://www.ogcio.gov.hk/en/about_us/org_chart/csm_id.html'
@@ -161,7 +161,7 @@ const csm_id=createNode({
 const csm_sc=createNode({
   classes:'csm',
   name:'Mr. Rex Tong',
-  title:'Chief Systems Manager (Smart City)',
+  title:'Chief Systems Manager<br>(Smart City)',
   tel: '2867 4488',
   email : 'rtong@ogcio.gov.hk',
   duties_link:'https://www.ogcio.gov.hk/en/about_us/org_chart/csm_sc.html'
@@ -172,7 +172,7 @@ const nobody1=createNoBody();
 const csm_cs=createNode({
   classes:'csm',
   name:'Mr. Daniel Cheung',
-  title:'Chief Systems Manager (Common Services)',
+  title:'Chief Systems Manager<br>(Common Services)',
   tel: '2867 4608',
   email : 'dywcheung@ogcio.gov.hk',
   duties_link:'https://www.ogcio.gov.hk/en/about_us/org_chart/csm_cs.html'
@@ -181,7 +181,7 @@ const csm_cs=createNode({
 const cso_ad=createNode({
   classes:'cso',
   name:'Ms. Fiona Li',
-  title:'Chief Executive Officer (Administration Division)',
+  title:'Chief Executive Officer<br>(Administration Division)',
   tel: '2867 5378',
   email : 'fmwli@ogcio.gov.hk'
 });
@@ -189,7 +189,7 @@ const cso_ad=createNode({
 const sta_fd=createNode({
   classes:'sta',
   name:'Ms. Catherine Chu',
-  title:'Senior Treasury Accountant (Finance Division)',
+  title:'Senior Treasury Accountant<br>(Finance Division)',
   tel: '2582 4493',
   email : 'cspchu@ogcio.gov.hk'
 });
