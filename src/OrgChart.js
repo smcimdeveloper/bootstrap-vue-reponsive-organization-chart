@@ -154,7 +154,10 @@ Vue.component("org-chart-desktop-node", {
   },
   computed: {
     hasLink: function() {
-      return this.node_data.link != undefined;
+      if (this.node_data.link)
+      return true;
+        else
+      return false;
     }
   }
 });
@@ -357,7 +360,10 @@ Vue.component("org-chart-mobile-node", {
   },
   computed: {
     hasLink: function() {
-      return this.node_data.link != undefined;
+      if (this.node_data.link)
+      return true;
+        else
+      return false;
     },
     node_level_class: function() {
       return `node_level${this.level} ${this.node_data.classes}`;
