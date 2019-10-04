@@ -171,11 +171,8 @@ Below is the complete sample code, which will output
     </script>
   </body>
 ```
-## to do....
-+ beautify the example
-+ make more example
-+ to demo vertical branch
-+ empty node
-+ json schema for the orgchart data json
 
-
+### More examples at
+- [example_1](examples/example_1)
+- [example_2](examples/example_2)
+- [example_3](examples/example_3)
