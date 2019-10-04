@@ -9,25 +9,18 @@ function createNode({ classes = "", html = "", link = "" }) {
 const director = createNode({
   classes: "director",
   html: `
-        <div class="d-flex">
-            <div style="flex-basis:25%" class="mr-3">
-            <img src="./android19.png" style="max-height:100px" class="img-fluid"></img>
-            </div>
-            <div>
-                <div class="title">Director of Ones Memory</div>
-                <div>Miss May CHAN</div>
-                <a href="tel:+852-12345678">1234 5678</a>
-            </div>
-        </div>        
-        `
+      <div class="title">Director of Government Logistics</div>
+      <div>Miss Mary CHOW</div>
+      <div class="phone">2231 5100</div>
+  `
 });
 
 const deputy_director = createNode({
   classes: "director",
   html: `
-        <div class="title">Deputy Director of Ones Memory</div>
-        <div>Miss Elen TANG</div>
-        <a href="tel:+852-12345678">1234 5678</a>
+        <div class="title">Deputy Director of Government Logistics</div>
+        <div>Miss Helen TANG</div>
+        <div class="phone">2231 5101</div>
         `
 });
 
@@ -35,16 +28,16 @@ const admin = createNode({
   classes: "division",
   html: `
         <div class="title">Administration Division</div>
-        <div>Tony LAI</div>
+        <div>Tony WONG</div>
         <div>Departmental Secretary</div>
-        <a href="tel:+852-12345678">1234 5678</a>
+        <div class="phone">2231 5115</a>
         <div>&nbsp;</div>
         <div>Accounts Section</div>
-        <div>Ms Doris SUMMER</div>
+        <div>Ms Doris CHEUNG</div>
         <div>Senior Treasury Accountant</div>
-        <a href="tel:+852-12345678">1234 5678</a>
+        <div class="phone">2231 5168</div>
         `,
-  link: "administration-division/"
+
 });
 
 const management = createNode({
@@ -52,58 +45,53 @@ const management = createNode({
   html: `
         <div class="title">Management Services Division</div>
         <div>Supplies Surveys and Stock Verification Section</div>
-        <div>Ms Cherry LIU</div>
+        <div>Ms Cherry CHOI</div>
         <div>Principal Supplies Officer</div>
-        <a href="tel:+852-12345678">1234 5678</a>
+        <div class="phone">2231 5345</div>
         <div>&nbsp;</div>
         <div>Systems Administration Section</div>
-        <div>Ms Mary HO</div>
+        <div>Ms Mary LEUNG</div>
         <div>Controller (Land Transport)</div>
-        <a href="tel:+852-12345678">1234 5678</a>
+        <div class="phone">2231 5147</div>
         `,
-  link: "management-services-division/"
 });
 
 const procurement = createNode({
   classes: "division",
   html: `
         <div class="title">Procurement Division</div>
-        <div>Ms Tracy LEUNG</div>
+        <div>Ms Tina LEUNG</div>
         <div>Controller (Procurement)</div>
-        <a href="tel:+852-12345678">1234 5678</a>
+        <div class="phone">2231 5226</div>
         `,
-  link: "procurement-division/"
 });
 
 const supplies = createNode({
   classes: "division ",
-  link: "supplies-management-division/",
   html: `
         <div class="title">Supplies Management Division</div>
-        <div>Miss Annie LAM</div>
+        <div>Miss Annie CHEUNG</div>
         <div>Controller (Supplies Management)</div>                        
-        <a href="tel:+852-12345678">1234 5678</a>
+        <div class="phone">2231 5108</div>
         `
 });
 const printing = createNode({
   classes: "division ",
-  link: "printing-division/",
   html: `
         <div class="title">Printing Division</div>
-        <div>Ms Angus CHAN</div>
+        <div>Ms Alice CHAN</div>
         <div>Controller (Printing Services)</div>
-        <a href="tel:+852-12345678">1234 5678</a>
+        <div class="phone">2564 9502</div>
         `
 });
 
 const land_transport = createNode({
   classes: "division ",
-  link: "land-transport-division/",
   html: `
         <div class="title">Land Transport Division</div>
-        <div>Ms May LAM</div>
+        <div>Ms May LEUNG</div>
         <div>Controller (Land Transport)</div>
-        <a href="tel:+852-12345678">1234 5678</a>
+        <div class="phone">2231 5147</div>
         `
 });
 

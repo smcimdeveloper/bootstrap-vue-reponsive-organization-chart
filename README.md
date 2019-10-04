@@ -13,7 +13,7 @@ My project is a frontend only static website, so I borrow their CSS and start to
 
 ## At a glance what it can do
 You can see this example code at [example_1](examples/example_1)
-![At a glance](doc/images/glance.gif)
+![At a glance](doc/images/example_1_demo.gif)
 
 ## Browser compatibility
 Modern browser support ES6, FlexBox css.  
