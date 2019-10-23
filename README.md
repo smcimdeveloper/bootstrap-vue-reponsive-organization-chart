@@ -12,7 +12,7 @@ My project is a frontend only static website, so I borrow their CSS and start to
 
 
 ## At a glance what it can do
-You can see this example code at [example_1](examples/example_1)
+You can see this example code at [homepage with more examples and source code...](https://jasper2virtual.github.io/projects/bootstrap-vue-reponsive-organization-chart/index.html  
 ![At a glance](doc/images/example_1_demo.gif)
 
 ## Browser compatibility
@@ -171,8 +171,3 @@ Below is the complete sample code, which will output
     </script>
   </body>
 ```
-
-### More examples at
-- [example_1](examples/example_1)
-- [example_2](examples/example_2)
-- [example_3](examples/example_3)
