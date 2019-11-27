@@ -1,46 +1,55 @@
 Vue.component("org-chart", {
   template: `
       <div>
-        <org-chart-desktop class="d-none" :class="desktop_display_class" :orgChart_data="orgChart_data"></org-chart-desktop>
-        <org-chart-mobile class="d-flex" :class="mobile_hidden_class" :orgChart_data="orgChart_data"></org-chart-mobile>
+        <org-chart-desktop class="d-none" :class="desktop_display_class" :root="orgChart_data.root" :connector_color="options.connector_color"></org-chart-desktop>
+        <org-chart-mobile class="d-flex" :class="mobile_hidden_class" :root="orgChart_data.root" :show_all_label="options.show_all_label" :hide_all_label="options.hide_all_label"></org-chart-mobile>
       </div>
       `,
   props: {
     orgChart_data: Object
   },
+  data:function(){
+    // options : default options value
+    return {
+      options:{
+        mobile_breakpoint:'sm',
+        connector_color:'#CCCCCC',
+        show_all_label:'Show All',
+        hide_all_label:'Hide All',
+      }
+    }
+  },
+  created(){
+    // override default options value if provided
+    if (this.orgChart_data.hasOwnProperty("options")){
+      Object.assign(this.options,this.orgChart_data.options);
+    }
+  },
   computed: {
-    comp_mobile_breakpoint: function() {
-      return this.orgChart_data.hasOwnProperty("mobile_breakpoint")
-        ? this.orgChart_data.mobile_breakpoint
-        : "sm";
-    },
     desktop_display_class: function() {
-      return `d-${this.comp_mobile_breakpoint}-flex`;
+      return `d-${this.options.mobile_breakpoint}-flex`;
     },
     mobile_hidden_class: function() {
-      return `d-${this.comp_mobile_breakpoint}-none`;
-    }
+      return `d-${this.options.mobile_breakpoint}-none`;
+    },
   }
 });
 
 Vue.component("org-chart-desktop", {
   template: `
 <div class="orgChartDesktopWrapper" ref="orgChartDesktopWrapper">
-<ul class="orgChartDesktop" ref="orgChartDesktop">
+<ul class="orgChartDesktop" ref="orgChartDesktop" :style="{'--connector-color':connector_color}">
   <org-chart-desktop-branch class="orgChartDesktopRoot" :branch_data="branch_data"></org-chart-desktop-branch>        
 </ul>
 </div>
 `,
   props: {
-    orgChart_data: Object
+    root:Object,
+    connector_color:String,
   },
   computed: {
-    branch_data: function() {
-      const foo = { node: this.orgChart_data.root.node };
-      if (this.orgChart_data.root.hasOwnProperty("branches")) {
-        foo.branches = this.orgChart_data.root.branches;
-      }
-      return foo;
+    branch_data:function(){
+      return this.root;
     },
     isIOS:function(){
       return /iPhone|iPad|iPod/i.test(navigator.userAgent);
@@ -67,9 +76,6 @@ Vue.component("org-chart-desktop", {
     },
     initCSS: function() {
       const orgchart = this.$refs.orgChartDesktop;
-      if (this.orgChart_data.hasOwnProperty("connector_color")){
-        orgchart.style.setProperty("--connector-color",this.orgChart_data.connector_color);
-      }
       if (this.isIE) {
         // fix IE render problem
         orgchart.style.setProperty("transform-origin", "top left");
@@ -170,7 +176,9 @@ Vue.component("org-chart-mobile", {
 </div>
 `,
   props: {
-    orgChart_data: Object
+    root: Object,
+    show_all_label:String,
+    hide_all_label:String,
   },
   data: function() {
     return {
@@ -230,17 +238,13 @@ Vue.component("org-chart-mobile", {
     }
   },
   computed: {
-    branch_data: function() {
-      const foo = { node: this.orgChart_data.root.node };
-      if (this.orgChart_data.root.hasOwnProperty("branches")) {
-        foo.branches = this.orgChart_data.root.branches;
-      }
-      return foo;
+    branch_data:function(){
+      return this.root;
     },
     btn_label: function() {
       const label = {
-        showall: "Show All",
-        hideall: "Hide All"
+        showall: this.show_all_label,
+        hideall: this.hide_all_label
       };
       return label[this.btnState];
     }

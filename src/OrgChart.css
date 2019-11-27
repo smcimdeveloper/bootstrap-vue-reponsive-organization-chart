@@ -10,7 +10,7 @@
     padding: 0;
     margin: 0;
     transform-origin:top center;
-    --connector-color:#CCCCCC;
+    --connector-color:unset;
 }
 
 
