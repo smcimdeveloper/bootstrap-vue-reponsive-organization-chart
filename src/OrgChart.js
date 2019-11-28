@@ -1,3 +1,5 @@
+// Licensed under MIT (https://github.com/jasper2virtual/bootstrap-vue-reponsive-organization-chart/blob/master/LICENSE)
+
 Vue.component("org-chart", {
   template: `
       <div>
