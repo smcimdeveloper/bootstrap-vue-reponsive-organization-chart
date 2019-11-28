@@ -1,4 +1,0 @@
-ComplexDiagram(
-  Comment('mobile_breakpoint'),
-  'mobile_breakpoint :',Choice(0,'"sm"','"md"','"lg"','"xl"')
-)

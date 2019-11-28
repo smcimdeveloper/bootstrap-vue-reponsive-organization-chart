@@ -1,0 +1,8 @@
+ComplexDiagram(
+Comment('options'),'{',
+OptionalSequence(Sequence('mobile_breakpoint :',Choice(0,'"sm"','"md"','"lg"','"xl"'),','),
+Sequence('connector_color :',NonTerminal('String'),','),
+Sequence('show_all_label :',NonTerminal('String'),','),
+Sequence('hide_all_label :',NonTerminal('String'),',')),
+  '}'
+)
